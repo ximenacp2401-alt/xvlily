@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XV Años Lily</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #fbe8f3, #fddde6);
+      color: #333;
+      text-align: center;
+    }
+
+    header {
+      background: #e91e63;
+      color: white;
+      padding: 30px 20px;
+      border-radius: 0 0 40px 40px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin: 10px 0 0;
+    }
+
+    .detalle {
+      margin: 40px auto;
+      max-width: 600px;
+      padding: 20px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .detalle h2 {
+      color: #e91e63;
+      margin-bottom: 15px;
+    }
+
+    .countdown {
+      font-size: 1.5rem;
+      color: #e91e63;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .galeria img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .galeria img:hover {
+      transform: scale(1.05);
+    }
+
+    .location-link {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 15px;
+      background: #e91e63;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .location-link:hover {
+      background: #d81b60;
+    }
+
+    footer {
+      margin-top: 40px;
+      background: #e91e63;
+      color: white;
+      padding: 20px;
+      border-radius: 40px 40px 0 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>✨ XV Años de Lily ✨</h1>
+    <p>Con mucho cariño te invito a celebrar este día tan especial</p>
+  </header>
+
+  <audio id="musica" loop>
+  <source src="Cafe_Tacuba__eres.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Botón de play -->
+<button id="playMusic" style="
+  margin-top:20px;
+  padding:10px 20px;
+  background:#e91e63;
+  color:white;
+  border:none;
+  border-radius:10px;
+  font-size:1rem;
+  cursor:pointer;
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+">
+  🎵 Tocar música
+</button>
+
+<script>
+  const boton = document.getElementById("playMusic");
+  const musica = document.getElementById("musica");
+
+  boton.addEventListener("click", () => {
+    musica.play();
+    boton.style.display = "none"; // Oculta el botón después de iniciar
+  });
+</script>
+
+  <section class="detalle">
+    <h2>📅 Detalles del Evento</h2>
+    <p><strong>Fecha:</strong> Sábado 29 de Noviembre 2025</p>
+    <p><strong>Hora:</strong> 2:00 PM</p>
+    <p><strong>Lugar:</strong> Salón de Eventos María Elena, Santa María Totoltepec, Toluca</p>
+    <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=Sal%C3%B3n+de+Eventos+Mar%C3%ADa+Elena+Calle+Jos%C3%A9+Mar%C3%ADa+Morelos+El+Carmen+Totoltepec+Toluca+Estado+de+M%C3%A9xico" target="_blank" rel="noopener">
+      Ver ubicación en mapa
+    </a>
+    <div class="countdown" id="countdown"></div>
+    <p>Será un día lleno de alegría, música y recuerdos inolvidables.  
+       ¡Tu presencia hará este momento aún más especial! 💖</p>
+       <p> recepcion:2:00pm Sabado 29 de Noviembre </p>
+  </section>
+
+  <section class="detalle">
+    <h2>📸 Galería de Fotos</h2>
+    <div class="galeria">
+      <img src="lily1.jpg" alt="Foto 1">
+      <img src="lily2.jpg" alt="Foto 2">
+      <img src="lily3.jpg" alt="Foto 3">
+      <img src="lily5.jpg" alt="Foto 4">
+    </div>
+  </section>
+
+  <section class="detalle">
+    <h2>🎁 Regalos</h2>
+    <p>El mejor regalo es tu compañía, pero si deseas hacerme un presente,  
+    agradeceré que sea en <strong>sobre con dinero</strong> 💌💸</p>
+  </section>
+
+  <section class="detalle">
+    <h2>🤍 Padrinos</h2>
+    <p><strong>Isidoro González Coyote</strong></p>
+    <p><strong>Dulce Patiño Ramírez</strong></p>
+  </section>
+
+  <footer>
+    <p>Con amor, Liliana 💕</p>
+  </footer>
+
+  <script>
+    const eventDate = new Date("Nov 29, 2025 14:00:00").getTime();
+
+    const countdown = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML = 
+        `⏳ Faltan: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+      if (distance < 0) {
+        clearInterval(countdown);
+        document.getElementById("countdown").innerHTML = "🎉 ¡Hoy es el gran día! 🎉";
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>
